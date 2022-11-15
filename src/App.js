@@ -27,7 +27,7 @@ class App extends Component {
 	console.log(this.state.selectedFile);
 	
 	// Request made to the backend api
-	axios.post("http://20.42.63.116:5000", formData)
+	axios.post("https://livetext-flask.herokuapp.com/", formData)
 	.then(response => this.setState({ translated_text: response.data}))
 	.catch(function (error) {
 		console.log(error)
