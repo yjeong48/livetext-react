@@ -48,7 +48,7 @@ class App extends Component {
 	return (
 		<div style={{textAlign:"center"}}>
 			<h1>
-			OCR Personal Project
+			OCR Cloud-Based Machine Learning Project
 			</h1>
 			<h3>
 			Translate text from any image to Korean
