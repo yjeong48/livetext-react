@@ -27,7 +27,7 @@ class App extends Component {
 	console.log(this.state.selectedFile);
 	
 	// Request made to the backend api
-	axios.post("https://livetext-flask.herokuapp.com/", formData)
+	axios.post("https://livetext-flask.herokuapp.com/translate", formData)
 	.then(response => this.setState({ translated_text: response.data}))
 	.catch(function (error) {
 		console.log(error)
@@ -48,7 +48,7 @@ class App extends Component {
 	return (
 		<div style={{textAlign:"center"}}>
 			<h1>
-			OCR Cloud-Based Machine Learning Project
+			- OCR Cloud-Based Machine Learning Project -
 			</h1>
 			<h3>
 			Translate text from any image to Korean
