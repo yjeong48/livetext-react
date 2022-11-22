@@ -128,7 +128,7 @@ class App extends Component {
     console.log(this.state.selectedFile);
 
     axios
-      .post("http://192.168.1.21:8080", formData, {
+      .post("https://livetext-flask.herokuapp.com/translate", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
