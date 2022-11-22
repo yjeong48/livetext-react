@@ -22,7 +22,7 @@ class App extends Component {
 
   onLanguageChange = (event) => {
     console.log(event.target.value);
-    this.setState({ target_lang: event.target.value });
+    this.setState({ targetLang: event.target.value });
   };
 
   onFileChange = (event) => {
@@ -110,32 +110,6 @@ class App extends Component {
       });
     });
   }
-
-  onFileUpload = () => {
-    const formData = new FormData();
-    formData.append(
-      "file",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-
-    formData.append("target_lang", this.state.target_lang);
-
-    // Details of the uploaded file
-    console.log(this.state.selectedFile);
-
-    // Request made to the backend api
-    axios
-      .post("https://livetext-flask.herokuapp.com/translate", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => this.setState({ translated_text: response.data }))
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   onFileUpload = () => {
     this.setState({ translatedText: "" });
