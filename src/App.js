@@ -164,7 +164,7 @@ class App extends Component {
     return (
       <div style={{ textAlign: "center" }}>
         <h1>- OCR Cloud-Based Machine Learning Project -</h1>
-        <h3>Translate text from any image to Korean</h3>
+        <h3>Translate text from any image!</h3>
         <div>
           <label for="language">Translate to: </label>
           <select
