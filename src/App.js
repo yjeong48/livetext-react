@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import "./style.css";
 
 class App extends Component {
   allowedFileTypes = "image/png, image/jpg, image/jpeg";
@@ -113,63 +114,68 @@ class App extends Component {
 
   onFileUpload = () => {
     this.setState({ translatedText: "" });
-    this.setState({ isLoading: true });
-    const formData = new FormData();
 
-    formData.append(
-      "file",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
+    if (this.state.selectedFile) {
+      console.log("file");
+      this.setState({ isLoading: false });
 
-    formData.append("targetLang", this.state.targetLang);
+      this.setState({ isLoading: true });
+      const formData = new FormData();
 
-    // details of the uploaded file
-    console.log(this.state.selectedFile);
+      formData.append(
+        "file",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      );
 
-    axios
-      .post("https://livetext-flask.herokuapp.com/translate", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        this.setState({ isLoading: false });
-        this.setState({ translatedText: response.data });
-      })
-      .catch((error) => {
-        if (error.response) {
-          // server responded with status code
+      formData.append("targetLang", this.state.targetLang);
+      // check details of the uploaded file
+      console.log(this.state.selectedFile);
+
+      axios
+        .post("https://livetext-flask.herokuapp.com/translate", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
           this.setState({ isLoading: false });
-          this.setState({ translatedText: "Something went wrong :(" });
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // request was made but no response was received
-          this.setState({ isLoading: false });
-          this.setState({ translatedText: "Something went wrong :(" });
-          console.log(error.request);
-        } else {
-          // error in request made
-          this.setState({ isLoading: false });
-          this.setState({ translatedText: "Something went wrong :(" });
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      });
+          this.setState({ translatedText: response.data });
+        })
+        .catch((error) => {
+          // Error
+          if (error.response) {
+            // server responded with status code
+            this.setState({ isLoading: false });
+            this.setState({ translatedText: "Something went wrong :(" });
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // request was made but no response was received
+            this.setState({ isLoading: false });
+            this.setState({ translatedText: "Try including more context" });
+            console.log(error.request);
+          } else {
+            // error in request made
+            this.setState({ isLoading: false });
+            this.setState({ translatedText: "Something went wrong :(" });
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+        });
+    }
   };
 
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <h1>- OCR Cloud-Based Machine Learning Project -</h1>
-        <h3>Translate text from any image!</h3>
+      <div>
+        <h1>OCR Image Text Translator</h1>
+        <h2>A cloud-based smart tool for polyglots</h2>
         <div>
           <label for="language">Translate to: </label>
           <select
-            select
-            type=""
+            className="myButton"
             value={this.state.targetLang}
             onChange={this.onLanguageChange}
           >
@@ -186,30 +192,45 @@ class App extends Component {
             <option value="es">Spanish</option>
           </select>
         </div>
-        <p></p>
         <div>
           <input
             type="file"
             accept={this.allowedFileTypes}
             onChange={this.onFileChange}
+            disabled={this.state.isLoading}
           />
-          <button onClick={this.onFileUpload} disabled={this.state.isLoading}>
-            Translate!
+          <button
+            className="myButton"
+            onClick={this.onFileUpload}
+            disabled={this.state.isLoading}
+          >
+            Translate
           </button>
         </div>
-        <p></p>
-        <ReactCrop
-          src={this.state.preview}
-          crop={this.state.crop}
-          onImageLoaded={this.onImageLoaded}
-          onComplete={this.onCropComplete}
-          onChange={this.onCropChange}
-          crossorigin={null}
-        />
+        {this.state.selectedFile && (
+          <p id="guide">You can select a specific area to translate!</p>
+        )}
         <div>
-          <p>Translated text: </p>
-          <PropagateLoader loading={this.state.isLoading} color="#36d7b7" />
-          <p>{this.state.translatedText}</p>
+          <ReactCrop
+            src={this.state.preview}
+            crop={this.state.crop}
+            onImageLoaded={this.onImageLoaded}
+            onComplete={this.onCropComplete}
+            onChange={this.onCropChange}
+            crossorigin={null}
+          />
+        </div>
+        <div>
+          <PropagateLoader
+            className="text-container"
+            loading={this.state.isLoading}
+            color="#36d7b7"
+          />
+          <div className="text-container">
+            {this.state.translatedText && (
+              <p id="translated">{this.state.translatedText}</p>
+            )}
+          </div>
         </div>
       </div>
     );

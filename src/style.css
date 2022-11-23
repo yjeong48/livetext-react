@@ -1,0 +1,83 @@
+body {
+  text-align: center;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 2;
+  line-height: 1.5;
+  color: white;
+  background-image: url(./livetext_background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+input {
+  margin: 2em;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  background-color: rgba(222, 222, 222, 0.25);
+}
+
+input::file-selector-button {
+  margin-right: 50px;
+  border: none;
+  background-color: rgba(222, 222, 222, 0.4);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.myButton {
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding: 10px 20px;
+  background-color: rgba(222, 222, 222, 0.25);
+}
+
+.display-image .ReactCrop__crop-selection {
+  border-radius: 13px;
+}
+
+h1 {
+  color: rgba(254, 254, 254, 0.938);
+  margin-bottom: 0;
+}
+h2 {
+  color: rgba(252, 252, 252, 0.702);
+  font-size: medium;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-right: 0px;
+}
+
+label {
+  font-weight: 400;
+  margin: 0.5em;
+}
+
+#translated {
+  border: 2px solid white;
+  background-color: rgba(222, 222, 222, 0.25);
+  border-radius: 15px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#guide {
+  color: rgba(252, 252, 252, 0.702);
+  font-size: medium;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 0px;
+}
+
+.text-container {
+  margin-top: 50px;
+  margin-right: 500px;
+  margin-left: 500px;
+  margin-bottom: 0;
+}
