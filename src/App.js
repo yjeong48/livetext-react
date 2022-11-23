@@ -9,6 +9,7 @@ class App extends Component {
   allowedFileTypes = "image/png, image/jpg, image/jpeg";
 
   state = {
+	initialFile: null,
     selectedFile: null,
     targetLang: "",
     translatedText: "",
@@ -39,6 +40,7 @@ class App extends Component {
     if (event.target.files && event.target.files.length > 0) {
       const initialImage = event.target.files[0];
       this.setState({ selectedFile: initialImage });
+	  this.setState({ initialFile: initialImage });
       const imageReader = new FileReader();
       imageReader.readAsDataURL(initialImage);
       imageReader.addEventListener("load", () =>
@@ -116,9 +118,6 @@ class App extends Component {
     this.setState({ translatedText: "" });
 
     if (this.state.selectedFile) {
-      console.log("file");
-      this.setState({ isLoading: false });
-
       this.setState({ isLoading: true });
       const formData = new FormData();
 
@@ -166,6 +165,17 @@ class App extends Component {
         });
     }
   };
+
+  onReset = () => {
+	this.setState({
+		crop: {
+		  unit: "%",
+		  width: 0,
+		  height: 0,
+		},
+	  });
+	  this.setState({ selectedFile:this.state.initialFile });
+  }
 
   render() {
     return (
@@ -220,6 +230,14 @@ class App extends Component {
             crossorigin={null}
           />
         </div>
+		{this.state.selectedFile && (
+		<button
+            className="myButton"
+            onClick={this.onReset}
+          >
+            Reset
+          </button>
+		)}
         <div>
           <PropagateLoader
             className="text-container"
