@@ -173,7 +173,7 @@ class App extends Component {
         <h1>OCR Image Text Translator</h1>
         <h2>A cloud-based smart tool for polyglots</h2>
         <div>
-          <label for="language">Translate to: </label>
+          <label>Translate to: </label>
           <select
             className="myButton"
             value={this.state.targetLang}
