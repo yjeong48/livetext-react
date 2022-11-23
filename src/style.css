@@ -62,9 +62,10 @@ label {
   border: 2px solid white;
   background-color: rgba(222, 222, 222, 0.25);
   border-radius: 15px;
-  padding-right: 10px;
+  padding-right: 20px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
 }
 
 #guide {
