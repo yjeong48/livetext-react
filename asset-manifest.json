@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/livetext-react/static/css/main.aa2376d6.css",
-    "main.js": "/livetext-react/static/js/main.93c35de0.js",
+    "main.css": "/livetext-react/static/css/main.1bd1315d.css",
+    "main.js": "/livetext-react/static/js/main.dcd0bc05.js",
     "static/js/787.62a58185.chunk.js": "/livetext-react/static/js/787.62a58185.chunk.js",
     "static/media/livetext_background.jpeg": "/livetext-react/static/media/livetext_background.351037dee1f84207be67.jpeg",
     "index.html": "/livetext-react/index.html",
-    "main.aa2376d6.css.map": "/livetext-react/static/css/main.aa2376d6.css.map",
-    "main.93c35de0.js.map": "/livetext-react/static/js/main.93c35de0.js.map",
+    "main.1bd1315d.css.map": "/livetext-react/static/css/main.1bd1315d.css.map",
+    "main.dcd0bc05.js.map": "/livetext-react/static/js/main.dcd0bc05.js.map",
     "787.62a58185.chunk.js.map": "/livetext-react/static/js/787.62a58185.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa2376d6.css",
-    "static/js/main.93c35de0.js"
+    "static/css/main.1bd1315d.css",
+    "static/js/main.dcd0bc05.js"
   ]
 }
